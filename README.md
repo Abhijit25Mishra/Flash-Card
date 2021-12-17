@@ -32,12 +32,12 @@ a Flash Card application which has a proper login system and dashboard where use
    
    - werkzeug
    
-   - sqlite3
 
 2. BootStrap
 
 3. SQLite3
 
+4. HTML, CSS, JavaScript
 
 ## Author
 
