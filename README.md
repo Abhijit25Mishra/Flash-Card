@@ -38,7 +38,6 @@ a Flash Card application which has a proper login system and dashboard where use
 
 3. SQLite3
 
-## [Video Presentation](https://drive.google.com/drive/folders/1k81PJP9r85KHl4LaLsCUz3nqwdHn0-Kl?usp=sharing)
 
 ## Author
 
