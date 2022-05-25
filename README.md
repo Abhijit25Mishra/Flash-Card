@@ -9,7 +9,7 @@ a Flash Card application which has a proper login system and dashboard where use
 2. go to the forked repo and either download as zip or copy the link and go to the terminal and clone the project.
    
    ```bash
-   git clone https://github.com/{{userName}}/Flash-Card.git
+   git clone https://github.com/Abhijit25Mishra/Flash-Card.git
    ```
 
 3. Make sure you have the required tect stack and the requirements(namely flask and sqlite3) satisfied. Project.db is already given but it might have some problem with authentication , so the create-db-table.py is given which will create new tables. Try this if the app doesnt work.
