@@ -4,7 +4,7 @@ from os import path
 from flask_login import LoginManager
 from flask_restful import Api
 
-
+# Api.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 db = SQLAlchemy()
 DB_NAME = "project.sqlite3"
 
