@@ -12,38 +12,24 @@ from werkzeug.security import generate_password_hash
 import random
 
 
-user_post_args = reqparse.RequestParser()
-user_post_args.add_argument('username')
-user_post_args.add_argument('password')
+# user_post_args = reqparse.RequestParser()
+# user_post_args.add_argument('username')
+# user_post_args.add_argument('password')
 
-card_put_args = reqparse.RequestParser()
-card_put_args.add_argument('score')
+# card_put_args = reqparse.RequestParser()
+# card_put_args.add_argument('score')
 
-deck_post_args = reqparse.RequestParser()
-deck_post_args.add_argument('deck_name')
+# deck_post_args = reqparse.RequestParser()
+# deck_post_args.add_argument('deck_name')
 
-card_post_args = reqparse.RequestParser()
-card_post_args.add_argument('front')
-card_post_args.add_argument('back')
+# card_post_args = reqparse.RequestParser()
+# card_post_args.add_argument('front')
+# card_post_args.add_argument('back')
 
 
 class UserAPI(Resource):
     def post(self):
-        # content_type = request.headers.get('Content-Type')
-        # print(content_type)
-        # if (content_type == 'application/json'):
-        #     json = request.json
-        #     return json
-        # else:
-        #     # json = request.json
-        #     # return json
-        #     # print(user_post_args.)
-
-        #     return 'Content-Type not supported!'
-
         x = request.form
-        # print(x.values())
-        # print(x.getlist('username'))
         username = x.getlist('username')[0]
         password = x.getlist('password')[0]
         print(username, password)
@@ -82,13 +68,17 @@ class UserAPI(Resource):
 
 class DeckAPI(Resource):
     def post(self, username):
-        args = deck_post_args.parse_args()
+        x = request.form
+        # print(x)
+        deck_name = x.getlist('deck_name')[0]
+        # args = deck_post_args.parse_args()
+        print(username)
         qd = Deck.query.filter_by(user=username)
         ud = []
         for c in qd:
             ud.append(c.deck_name)
 
-        d = Deck(deck_name=args['deck_name'], user=username)
+        d = Deck(deck_name=deck_name, user=username)
         db.session.add(d)
         db.session.commit()
         return redirect('/dashboard')
@@ -107,8 +97,12 @@ class DeckAPI(Resource):
 
 class CardAPI(Resource):
     def post(self, deck):
-        args = card_post_args.parse_args()
-        new_card = Card(front=args['front'], back=args['back'], deck=deck)
+        # args = card_post_args.parse_args()
+        x = request.form
+        # print(x)
+        front = x.getlist('front')[0]
+        back = x.getlist('back')[0]
+        new_card = Card(front=front, back=back, deck=deck)
         db.session.add(new_card)
         db.session.commit()
         return redirect(f'/review/{deck}')
